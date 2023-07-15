@@ -103,10 +103,4 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 target_link_libraries(${PROJECT_NAME} PUBLIC cape)
 
-# target_include_directories(${PROJECT_NAME} PRIVATE ${LEO_INCLUDE_DIRS})
-# target_link_libraries(${PROJECT_NAME} PRIVATE ${LEO_LIBRARIES})
-
-# target_compile_options(${PROJECT_NAME} PRIVATE ${CAPE_CFLAGS})
-# target_include_directories(${PROJECT_NAME} PRIVATE ${CAPE_INCLUDE_DIRS})
-# target_link_libraries(${PROJECT_NAME} PRIVATE ${CAPE_LIBRARIES})
 
