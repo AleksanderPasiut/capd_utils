@@ -1,0 +1,83 @@
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Author: Aleksander M. Pasiut
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#pragma once
+
+#include "capd/basic_tools.hpp"
+#include "type_cast.internal.hpp"
+
+namespace Carina
+{
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//! @brief Convert scalar variables
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+template<typename ScalarOut, typename ScalarIn>
+struct ScalarConverter
+{
+    ScalarOut operator() (const ScalarIn& arg) const
+    {
+        ScalarConverterInternal<
+            ScalarOut,
+            capd::TypeTraits<ScalarOut>::isInterval,
+            ScalarIn,
+            capd::TypeTraits<ScalarIn>::isInterval> internal {};
+
+        return internal(arg);
+    }
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//! @brief Cast scalar from one type to another
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+template<typename ScalarOut, typename ScalarIn>
+inline ScalarOut scalar_cast(const ScalarIn& arg)
+{
+    ScalarConverter<ScalarOut, ScalarIn> converter {};
+    return converter(arg);
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//! @brief Cast vector from one type to another
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+template<typename VectorOut, typename VectorIn>
+inline VectorOut vector_cast(const VectorIn& arg)
+{
+    using ScalarOut = typename VectorOut::ScalarType;
+    using ScalarIn = typename VectorIn::ScalarType;
+
+    ScalarConverter<ScalarOut, ScalarIn> converter {};
+
+    VectorOut ret( arg.dimension() );
+    for (unsigned i = 0; i < arg.dimension(); ++i)
+    {
+        ret[i] = converter( arg[i] );
+    }
+    return ret;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//! @brief Cast matrix from one type to another
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+template<typename MatrixOut, typename MatrixIn>
+inline MatrixOut matrix_cast(const MatrixIn& arg)
+{
+    using ScalarOut = typename MatrixOut::ScalarType;
+    using ScalarIn = typename MatrixIn::ScalarType;
+
+    ScalarConverter<ScalarOut, ScalarIn> converter {};
+
+    MatrixOut ret(arg.numberOfRows(), arg.numberOfColumns());
+    for (unsigned i = 1; i <= arg.numberOfRows(); ++i)
+    {
+        for (unsigned j = 1; j <= arg.numberOfColumns(); ++j)
+        {
+            ret(i,j) = converter( arg(i,j)  );
+        }
+    }
+
+    return ret;
+}
+
+}

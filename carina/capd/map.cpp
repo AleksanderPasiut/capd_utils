@@ -1,0 +1,26 @@
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Author: Aleksander M. Pasiut
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#include "map.hpp"
+
+namespace capd
+{
+namespace map
+{
+
+template class Map<Carina::RMatrix>;
+template class Map<Carina::IMatrix>;
+
+template class Map<Carina::LRMatrix>;
+template class Map<Carina::LIMatrix>;
+
+#ifdef __HAVE_MPFR__
+
+template class Map<Carina::MpRMatrix>;
+template class Map<Carina::MpIMatrix>;
+
+#endif
+
+}
+}

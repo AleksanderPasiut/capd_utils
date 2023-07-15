@@ -1,0 +1,142 @@
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Author: Aleksander M. Pasiut
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#pragma once
+
+#include <carina/pne_map.hpp>
+#include <carina/identity_map.hpp>
+#include <carina/idx_list.hpp>
+#include <carina/map_base.hpp>
+
+namespace Carina
+{
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//! @brief Parallel shooting map (PSM)
+//!
+//! Create map of the form:
+//!       y_k = f( x_{k-1} ) - x_k
+//!
+//! for k in { 1, ..., n }.
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+template<typename MapT, typename MapU>
+class PSM : public MapBase<MapT>
+{
+public:
+    using ScalarType = typename MapT::ScalarType;
+    using VectorType = typename MapT::VectorType;
+    using MatrixType = typename MapT::MatrixType;
+
+    PSM(size_t n, MapU& map_u)
+        : m_n( check_size(n) )
+        , m_map_u(map_u)
+        , m_N( get_dimension(m_map_u) )
+        , m_id(m_N)
+        , m_pne_container()
+        , m_id_container()
+    {
+        m_pne_container.reserve(m_n);
+        m_id_container.reserve(m_n);
+
+        for (size_t k = 0; k < m_n; ++k)
+        {
+            m_pne_container.emplace_back(
+                (m_n+1) * m_N,
+                IdxList<size_t>::create(k*m_N, m_N),
+                IdxList<int>::create(m_n*m_N, k*m_N, m_N),
+                std::ref(m_map_u));
+
+            m_id_container.emplace_back(
+                (m_n+1) * m_N,
+                IdxList<size_t>::create((k+1)*m_N, m_N),
+                IdxList<int>::create(m_n*m_N, k*m_N, m_N),
+                std::ref(m_id));
+        }
+    }
+
+    VectorType operator() (const VectorType& vec) override
+    {
+        VectorType ret( this->imageDimension() );
+
+        for (auto & pne : m_pne_container)
+        {
+            ret += pne(vec);
+        }
+
+        for (auto & pne : m_id_container)
+        {
+            ret -= pne(vec);
+        }
+
+        return ret;
+    }
+
+    VectorType operator() (const VectorType& vec, MatrixType& der) override
+    {
+        der = MatrixType( this->imageDimension(), this->dimension() );
+
+        VectorType ret( this->imageDimension() );
+        MatrixType tmp( this->imageDimension(), this->dimension() );
+
+        for (auto & pne : m_pne_container)
+        {
+            ret += pne(vec, tmp);
+            der += tmp;
+        }
+
+        for (auto & pne : m_id_container)
+        {
+            ret -= pne(vec, tmp);
+            der -= tmp;
+        }
+
+        return ret;
+    }
+
+    unsigned dimension() const noexcept override
+    {
+        return (m_n+1) * m_N;
+    }
+
+    unsigned imageDimension() const noexcept override
+    {
+        return m_n * m_N;
+    }
+
+private:
+    static size_t check_size(size_t n)
+    {
+        if (n > 0)
+        {
+            return n;
+        }
+        else
+        {
+            throw std::invalid_argument("PSM: n value must be greater than 0!");
+        }
+    }
+
+    static unsigned get_dimension(const MapU& map_u)
+    {
+        if ( map_u.dimension() == map_u.imageDimension() )
+        {
+            return map_u.dimension();
+        }
+        else
+        {
+            throw std::invalid_argument("PSM: internal map dimension and image dimension must be equal!");
+        }
+    }
+
+    const size_t m_n;
+    MapU& m_map_u;
+
+    const unsigned m_N;
+    IdentityMap<MapT> m_id;
+
+    std::vector<PNE<MapT, MapU&>> m_pne_container;
+    std::vector<PNE<MapT, decltype(m_id)&>> m_id_container;
+};
+
+}
