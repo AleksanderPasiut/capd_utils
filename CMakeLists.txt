@@ -96,9 +96,12 @@ set(SOURCES_LIST
 
 add_library(${PROJECT_NAME} STATIC ${SOURCES_LIST})
 
+add_subdirectory(cape)
 add_dependencies(${PROJECT_NAME} cape)
 
-target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR})
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
+target_link_libraries(${PROJECT_NAME} PUBLIC cape)
 
 # target_include_directories(${PROJECT_NAME} PRIVATE ${LEO_INCLUDE_DIRS})
 # target_link_libraries(${PROJECT_NAME} PRIVATE ${LEO_LIBRARIES})
