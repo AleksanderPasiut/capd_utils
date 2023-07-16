@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include <leo/readable_memory.hpp>
+#include "readable_memory.hpp"
 
 #include "capd/basic_types.hpp"
 

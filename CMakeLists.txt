@@ -43,7 +43,6 @@ set(HEADERS_LIST
     carina/identity_map.hpp
     carina/idx_list.hpp
     carina/image_sum.hpp
-    carina/implicit_function_differential_equation.hpp
     carina/local_coordinate_system.hpp
     carina/local_map.base.hpp
     carina/local_map.hpp
@@ -92,6 +91,9 @@ set(SOURCES_LIST
     carina/capd/ode_solver.cpp
     carina/capd/poincare_map.cpp
     carina/capd/timemap.cpp
+
+    carina/number_string_info.cpp
+    carina/number_string_utilities.cpp
     )
 
 add_library(${PROJECT_NAME} STATIC ${SOURCES_LIST})
