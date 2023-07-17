@@ -98,11 +98,11 @@ set(SOURCES_LIST
 
 add_library(${PROJECT_NAME} STATIC ${SOURCES_LIST})
 
-add_subdirectory(cape)
-add_dependencies(${PROJECT_NAME} cape)
+add_subdirectory(capd2)
+add_dependencies(${PROJECT_NAME} capd2)
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
-target_link_libraries(${PROJECT_NAME} PUBLIC cape)
+target_link_libraries(${PROJECT_NAME} PUBLIC capd2)
 
 
