@@ -43,6 +43,8 @@ struct ScalarParser<Interval>
     }
 };
 
+#ifdef __HAVE_MPFR__
+
 template<>
 struct ScalarParser<MpReal>
 {
@@ -61,6 +63,8 @@ struct ScalarParser<MpInterval>
         return MpInterval(value, value);
     }
 };
+
+#endif
 
 template<typename ScalarOut>
 inline ScalarOut parse(const std::string& arg)
