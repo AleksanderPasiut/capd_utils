@@ -50,16 +50,16 @@ public:
 		std::stringstream ss(arg);
 
 		mpfr_prec_t precision {};
-		Leo::ReadableMemory::parse_hex(ss, &precision, sizeof(precision));
+		Carina::ReadableMemory::parse_hex(ss, &precision, sizeof(precision));
 
 		MpRealOpen ret(0, precision);
 		mpfr_t & mpfr_rep = ret.get_rep();
 
-		Leo::ReadableMemory::parse_hex(ss, &(mpfr_rep->_mpfr_sign), sizeof(mpfr_rep->_mpfr_sign));
-		Leo::ReadableMemory::parse_hex(ss, &(mpfr_rep->_mpfr_exp), sizeof(mpfr_rep->_mpfr_exp));
+		Carina::ReadableMemory::parse_hex(ss, &(mpfr_rep->_mpfr_sign), sizeof(mpfr_rep->_mpfr_sign));
+		Carina::ReadableMemory::parse_hex(ss, &(mpfr_rep->_mpfr_exp), sizeof(mpfr_rep->_mpfr_exp));
 
 		const size_t length = prec_to_limb_count(mpfr_rep->_mpfr_prec);
-		Leo::ReadableMemory::parse_hex(ss, mpfr_rep->_mpfr_d, sizeof(mp_limb_t) * length);
+		Carina::ReadableMemory::parse_hex(ss, mpfr_rep->_mpfr_d, sizeof(mp_limb_t) * length);
 
 		return ret;
 	}
@@ -74,12 +74,12 @@ public:
 
 		std::stringstream ss {};
 
-		Leo::ReadableMemory::print_hex(ss, &(mpfr_rep->_mpfr_prec), sizeof(mpfr_rep->_mpfr_prec));
-		Leo::ReadableMemory::print_hex(ss, &(mpfr_rep->_mpfr_sign), sizeof(mpfr_rep->_mpfr_sign));
-		Leo::ReadableMemory::print_hex(ss, &(mpfr_rep->_mpfr_exp), sizeof(mpfr_rep->_mpfr_exp));
+		Carina::ReadableMemory::print_hex(ss, &(mpfr_rep->_mpfr_prec), sizeof(mpfr_rep->_mpfr_prec));
+		Carina::ReadableMemory::print_hex(ss, &(mpfr_rep->_mpfr_sign), sizeof(mpfr_rep->_mpfr_sign));
+		Carina::ReadableMemory::print_hex(ss, &(mpfr_rep->_mpfr_exp), sizeof(mpfr_rep->_mpfr_exp));
 
 		const size_t length = prec_to_limb_count(mpfr_rep->_mpfr_prec);
-		Leo::ReadableMemory::print_hex(ss, mpfr_rep->_mpfr_d, sizeof(mp_limb_t) * length);
+		Carina::ReadableMemory::print_hex(ss, mpfr_rep->_mpfr_d, sizeof(mp_limb_t) * length);
 
 		return ss.str();
 	}

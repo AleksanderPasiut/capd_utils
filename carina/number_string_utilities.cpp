@@ -7,7 +7,7 @@
 #include "number_string_utilities.hpp"
 #include "number_string_info.hpp"
 
-namespace Leo
+namespace Carina
 {
     
 bool is_string_integer(const std::string& str)

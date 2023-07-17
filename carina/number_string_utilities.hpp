@@ -6,7 +6,7 @@
 
 #include <string>
 
-namespace Leo
+namespace Carina
 {
     
 bool is_string_integer(const std::string& str);

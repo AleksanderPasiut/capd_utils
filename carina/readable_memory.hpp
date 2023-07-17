@@ -7,7 +7,7 @@
 #include <iomanip>
 #include <ostream>
 
-namespace Leo
+namespace Carina
 {
 
 class ReadableMemory

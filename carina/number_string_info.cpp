@@ -7,7 +7,7 @@
 #include "number_string_info.hpp"
 #include "number_string_utilities.hpp"
 
-namespace Leo
+namespace Carina
 {
 
 NumberStringInfo::NumberStringInfo(const std::string& str)
