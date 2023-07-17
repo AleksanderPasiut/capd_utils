@@ -121,7 +121,7 @@ struct ScalarConverterInternal<ScalarOut, false, ScalarIn, true>
         using BoundType = typename BasicTools::BoundType<ScalarIn>::ScalarType;
         ScalarConverterInternal<ScalarOut, false, BoundType, false> internal {};
 
-        const ScalarIn mid = Carina::middle(arg);
+        const ScalarIn mid = middle(arg);
         return internal( mid.leftBound() );
     }
 };

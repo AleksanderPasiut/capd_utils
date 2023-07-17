@@ -50,16 +50,16 @@ public:
 		std::stringstream ss(arg);
 
 		mpfr_prec_t precision {};
-		Carina::ReadableMemory::parse_hex(ss, &precision, sizeof(precision));
+		ReadableMemory::parse_hex(ss, &precision, sizeof(precision));
 
 		MpRealOpen ret(0, precision);
 		mpfr_t & mpfr_rep = ret.get_rep();
 
-		Carina::ReadableMemory::parse_hex(ss, &(mpfr_rep->_mpfr_sign), sizeof(mpfr_rep->_mpfr_sign));
-		Carina::ReadableMemory::parse_hex(ss, &(mpfr_rep->_mpfr_exp), sizeof(mpfr_rep->_mpfr_exp));
+		ReadableMemory::parse_hex(ss, &(mpfr_rep->_mpfr_sign), sizeof(mpfr_rep->_mpfr_sign));
+		ReadableMemory::parse_hex(ss, &(mpfr_rep->_mpfr_exp), sizeof(mpfr_rep->_mpfr_exp));
 
 		const size_t length = prec_to_limb_count(mpfr_rep->_mpfr_prec);
-		Carina::ReadableMemory::parse_hex(ss, mpfr_rep->_mpfr_d, sizeof(mp_limb_t) * length);
+		ReadableMemory::parse_hex(ss, mpfr_rep->_mpfr_d, sizeof(mp_limb_t) * length);
 
 		return ret;
 	}
@@ -74,12 +74,12 @@ public:
 
 		std::stringstream ss {};
 
-		Carina::ReadableMemory::print_hex(ss, &(mpfr_rep->_mpfr_prec), sizeof(mpfr_rep->_mpfr_prec));
-		Carina::ReadableMemory::print_hex(ss, &(mpfr_rep->_mpfr_sign), sizeof(mpfr_rep->_mpfr_sign));
-		Carina::ReadableMemory::print_hex(ss, &(mpfr_rep->_mpfr_exp), sizeof(mpfr_rep->_mpfr_exp));
+		ReadableMemory::print_hex(ss, &(mpfr_rep->_mpfr_prec), sizeof(mpfr_rep->_mpfr_prec));
+		ReadableMemory::print_hex(ss, &(mpfr_rep->_mpfr_sign), sizeof(mpfr_rep->_mpfr_sign));
+		ReadableMemory::print_hex(ss, &(mpfr_rep->_mpfr_exp), sizeof(mpfr_rep->_mpfr_exp));
 
 		const size_t length = prec_to_limb_count(mpfr_rep->_mpfr_prec);
-		Carina::ReadableMemory::print_hex(ss, mpfr_rep->_mpfr_d, sizeof(mp_limb_t) * length);
+		ReadableMemory::print_hex(ss, mpfr_rep->_mpfr_d, sizeof(mp_limb_t) * length);
 
 		return ss.str();
 	}

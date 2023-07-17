@@ -16,7 +16,7 @@ public:
     ReadableScalar(const char * str) : m_buffer(str)
     {}
 
-    ReadableScalar(ScalarType x) : m_buffer( Carina::ReadableMemory::print_str(x) )
+    ReadableScalar(ScalarType x) : m_buffer( ReadableMemory::print_str(x) )
     {}
 
     operator std::string() const
@@ -26,7 +26,7 @@ public:
 
     operator ScalarType() const
     {
-        return Carina::ReadableMemory::parse_str<ScalarType>(m_buffer);
+        return ReadableMemory::parse_str<ScalarType>(m_buffer);
     }
 
 private:

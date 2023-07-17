@@ -19,7 +19,7 @@ namespace Carina
 {
 
 template<typename MapT>
-class GridMap : public Carina::MapBase<MapT>
+class GridMap : public MapBase<MapT>
 {
 public:
     using ScalarType = typename MapT::ScalarType;

@@ -128,7 +128,7 @@ private:
 //! @brief Time map implementation (specialized for computation in local coordinate systems)
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template<typename MapT>
-class LocalTimemapWrapper : Carina::MapBase<MapT>
+class LocalTimemapWrapper : MapBase<MapT>
 {
 public:
     using ScalarType = typename MapT::ScalarType;

@@ -147,7 +147,7 @@ private:
 //! @brief Poincare map implementation (specialized for computation in local coordinate systems)
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template<typename MapT, typename SectionT, bool flow_der = false>
-class LocalPoincareWrapper : Carina::MapBase<MapT>
+class LocalPoincareWrapper : MapBase<MapT>
 {
 public:
     using ScalarType = typename MapT::ScalarType;

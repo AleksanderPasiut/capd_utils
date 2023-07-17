@@ -41,8 +41,8 @@ public:
         const IdxList<int>& out_idx_list,
         MapUArgs... map_u_args)
             : m_map_u(map_u_args...)
-            , m_projection(Carina::ProjectionMap<MapT>::create(input_size, in_idx_list))
-            , m_extension(Carina::ExtensionMap<MapT>::create(out_idx_list))
+            , m_projection(ProjectionMap<MapT>::create(input_size, in_idx_list))
+            , m_extension(ExtensionMap<MapT>::create(out_idx_list))
     {
         if ( m_projection.imageDimension() != m_map_u.dimension() )
         {

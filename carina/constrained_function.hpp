@@ -110,19 +110,19 @@ private:
     {
         this->assert_vector_size(vec, this->dimension(), "Constrained function vec vector size mismatch!");
 
-        const VectorType extension_vector { Carina::Concat<MapT>::concat_vectors({ vec, m_initial_value }) };
-        MapT extend { Carina::ExtensionMap<MapT>::create(extension_vector, m_extension_idx_list) };
+        const VectorType extension_vector { Concat<MapT>::concat_vectors({ vec, m_initial_value }) };
+        MapT extend { ExtensionMap<MapT>::create(extension_vector, m_extension_idx_list) };
 
-        Carina::CompositeMap<MapT, MapT&, MapV&> objective
+        CompositeMap<MapT, MapT&, MapV&> objective
         {
             std::ref(extend),
             std::ref(m_g)
         };
 
-        Carina::NewtonMethod find_and_bound( objective, m_initial_value, m_newton_steps );
+        NewtonMethod find_and_bound( objective, m_initial_value, m_newton_steps );
         if (find_and_bound.is_successful())
         {
-            return Carina::Concat<MapT>::concat_vectors({ vec, find_and_bound.get_root() });
+            return Concat<MapT>::concat_vectors({ vec, find_and_bound.get_root() });
         }
         else
         {
@@ -133,9 +133,9 @@ private:
     MapU m_f;
     MapV m_g;
 
-    const Carina::IdxList<int> m_extension_idx_list
+    const IdxList<int> m_extension_idx_list
     {
-        Carina::IdxList<int>::create(m_f.dimension(), m_f.dimension()-m_g.imageDimension(), m_g.imageDimension())
+        IdxList<int>::create(m_f.dimension(), m_f.dimension()-m_g.imageDimension(), m_g.imageDimension())
     };
 
     const VectorType m_initial_value;
