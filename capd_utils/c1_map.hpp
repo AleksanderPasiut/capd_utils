@@ -4,8 +4,8 @@
 
 #pragma once
 
-#include <carina/capd/basic_tools.hpp>
-#include <carina/map_base.hpp>
+#include <capd_utils/capd/basic_tools.hpp>
+#include <capd_utils/map_base.hpp>
 
 namespace Carina
 {

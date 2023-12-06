@@ -4,8 +4,8 @@
 
 #pragma once
 
-#include <carina/householder_generator.hpp>
-#include <carina/projection_map.hpp>
+#include <capd_utils/householder_generator.hpp>
+#include <capd_utils/projection_map.hpp>
 
 namespace Carina
 {

@@ -5,7 +5,7 @@
 #pragma once
 
 #include "eigenproblem.hpp"
-#include <carina/newton_method/newton_method.multisearcher.hpp>
+#include <capd_utils/newton_method/newton_method.multisearcher.hpp>
 
 namespace Carina
 {

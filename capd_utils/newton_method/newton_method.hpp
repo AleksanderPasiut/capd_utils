@@ -7,9 +7,9 @@
 #include <list>
 #include <algorithm>
 
-#include <carina/capd/basic_tools.hpp>
-#include <carina/capd/gauss_solver.hpp>
-#include <carina/capd/norm.hpp>
+#include <capd_utils/capd/basic_tools.hpp>
+#include <capd_utils/capd/gauss_solver.hpp>
+#include <capd_utils/capd/norm.hpp>
 
 #include "newton_method.roots_list.hpp"
 

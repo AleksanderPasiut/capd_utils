@@ -6,38 +6,33 @@
 
 #include <memory>
 
-#include <carina/pne_map.hpp>
-#include <carina/identity_map.hpp>
-#include <carina/idx_list.hpp>
-#include <carina/map_base.hpp>
+#include <capd_utils/pne_map.hpp>
+#include <capd_utils/identity_map.hpp>
+#include <capd_utils/idx_list.hpp>
+#include <capd_utils/map_base.hpp>
 
 namespace Carina
 {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//! @brief Extended parallel shooting map (EPSM)
+//! @brief Extended parallel shooting map reduced (EPSMR)
 //!
-//! Create map ( x_0, ..., x_n ) -> ( y_0, ..., y_{n-1} ) of the form:
+//! Create map ( x_0, ..., x_{n-1} ) -> ( y_0, ..., y_{n-1} ) of the form:
 //!       y_0     = f( x_0 )     - x_1,
 //!       y_{k-1} = g( x_{k-1} ) - x_k,
-//!       y_{n-1} = h( x_{n-1} ) - x_n,
+//!       y_{n-1} = h( x_{n-1} ),
 //!
-//! for k in { 2, ..., n-1 }, where n >= 3.
-//!
-//! For n == 2, map of the following form is created:
-//!       y_0 = f( x_0 ) - x_1,
-//!       y_1 = h( x_1 ) - x_2.
-//!
+//! for k in { 2, ..., n-1 }.
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template<typename MapT, typename MapF, typename MapG, typename MapH>
-class EPSM : public MapBase<MapT>
+class EPSMR : public MapBase<MapT>
 {
 public:
     using ScalarType = typename MapT::ScalarType;
     using VectorType = typename MapT::VectorType;
     using MatrixType = typename MapT::MatrixType;
 
-    EPSM(size_t n, MapF& map_f_ref, MapG& map_g_ref, MapH& map_h_ref)
+    EPSMR(size_t n, MapF& map_f_ref, MapG& map_g_ref, MapH& map_h_ref)
         : m_n( check_size(n) )
         , m_K( calc_incoming_dimension(n, map_f_ref, map_g_ref, map_h_ref) )
         , m_N( calc_internal_dimension(n, map_f_ref, map_g_ref, map_h_ref) )
@@ -53,7 +48,6 @@ public:
         , m_pne_h()
         , m_id_c_f()
         , m_id_c_g()
-        , m_id_c_h()
     {
         m_pne_g.reserve(m_n-2);
         m_id_c_g.reserve(m_n-2);
@@ -90,12 +84,6 @@ public:
             IdxList<size_t>::create(m_K + (m_n-2)*m_N, m_N),
             IdxList<int>::create(this->imageDimension(), (m_n-1)*m_N, m_M),
             std::ref(m_map_h));
-
-        m_id_c_h = std::make_unique<PNE<MapT, decltype(m_id_h)&>>(
-            this->dimension(),
-            IdxList<size_t>::create(m_K + (m_n-1)*m_N, m_M),
-            IdxList<int>::create(this->imageDimension(), (m_n-1)*m_N, m_M),
-            std::ref(m_id_h));
     }
 
     VectorType operator() (const VectorType& vec) override
@@ -116,7 +104,6 @@ public:
         }
 
         ret += (*m_pne_h)(vec);
-        ret -= (*m_id_c_h)(vec);
 
         return ret;
     }
@@ -149,15 +136,12 @@ public:
         ret += (*m_pne_h)(vec, tmp);
         der += tmp;
 
-        ret -= (*m_id_c_h)(vec, tmp);
-        der -= tmp;
-
         return ret;
     }
 
     unsigned dimension() const noexcept override
     {
-        return m_K + m_N*(m_n-1) + m_M;
+        return m_K + m_N*(m_n-1);
     }
 
     unsigned imageDimension() const noexcept override
@@ -174,7 +158,7 @@ private:
         }
         else
         {
-            throw std::invalid_argument("EPSM: n value must be greater or equal 2!");
+            throw std::invalid_argument("EPSMR: n value must be greater or equal 2!");
         }
     }
 

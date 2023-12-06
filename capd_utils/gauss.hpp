@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include <carina/capd/gauss_solver.hpp>
+#include <capd_utils/capd/gauss_solver.hpp>
 
 namespace Carina
 {
