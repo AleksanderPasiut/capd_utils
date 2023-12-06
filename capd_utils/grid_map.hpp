@@ -15,7 +15,7 @@
 #include "progress_logger.hpp"
 #endif
 
-namespace Carina
+namespace CapdUtils
 {
 
 template<typename MapT>

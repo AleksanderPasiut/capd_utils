@@ -7,7 +7,7 @@
 #include "newton_method.expander.hpp"
 #include "type_cast.hpp"
 
-namespace Carina
+namespace CapdUtils
 {
 
 template<typename MapT>

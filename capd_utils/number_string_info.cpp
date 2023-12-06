@@ -7,7 +7,7 @@
 #include "number_string_info.hpp"
 #include "number_string_utilities.hpp"
 
-namespace Carina
+namespace CapdUtils
 {
 
 NumberStringInfo::NumberStringInfo(const std::string& str)

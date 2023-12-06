@@ -6,7 +6,7 @@
 
 #include "capd/map.hpp"
 
-namespace Carina
+namespace CapdUtils
 {
 
 template<typename ScalarType>

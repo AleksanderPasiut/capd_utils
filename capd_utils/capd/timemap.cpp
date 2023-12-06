@@ -9,16 +9,16 @@ namespace capd
 namespace poincare
 {
 
-template class TimeMap<Carina::OdeSolver<Carina::RMap>>;
-template class TimeMap<Carina::OdeSolver<Carina::IMap>>;
+template class TimeMap<CapdUtils::OdeSolver<CapdUtils::RMap>>;
+template class TimeMap<CapdUtils::OdeSolver<CapdUtils::IMap>>;
 
-template class TimeMap<Carina::OdeSolver<Carina::LRMap>>;
-template class TimeMap<Carina::OdeSolver<Carina::LIMap>>;
+template class TimeMap<CapdUtils::OdeSolver<CapdUtils::LRMap>>;
+template class TimeMap<CapdUtils::OdeSolver<CapdUtils::LIMap>>;
 
 #ifdef __HAVE_MPFR__
 
-template class TimeMap<Carina::OdeSolver<Carina::MpRMap>>;
-template class TimeMap<Carina::OdeSolver<Carina::MpIMap>>;
+template class TimeMap<CapdUtils::OdeSolver<CapdUtils::MpRMap>>;
+template class TimeMap<CapdUtils::OdeSolver<CapdUtils::MpIMap>>;
 
 #endif
 

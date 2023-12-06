@@ -9,16 +9,16 @@ namespace capd
 namespace dynsys
 {
 
-template class BasicOdeSolver<Carina::RMap>;
-template class OdeSolver<Carina::IMap>;
+template class BasicOdeSolver<CapdUtils::RMap>;
+template class OdeSolver<CapdUtils::IMap>;
 
-template class BasicOdeSolver<Carina::LRMap>;
-template class OdeSolver<Carina::LIMap>;
+template class BasicOdeSolver<CapdUtils::LRMap>;
+template class OdeSolver<CapdUtils::LIMap>;
 
 #ifdef __HAVE_MPFR__
 
-template class BasicOdeSolver<Carina::MpRMap>;
-template class OdeSolver<Carina::MpIMap>;
+template class BasicOdeSolver<CapdUtils::MpRMap>;
+template class OdeSolver<CapdUtils::MpIMap>;
 
 #endif
 

@@ -10,7 +10,7 @@
 
 #include "newton_method.root.hpp"
 
-namespace Carina
+namespace CapdUtils
 {
 
 template<typename MapT>

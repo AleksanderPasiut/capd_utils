@@ -6,7 +6,7 @@
 
 #include <capd/capdlib.h>
 
-namespace Carina
+namespace CapdUtils
 {
 
 template<typename MapT>

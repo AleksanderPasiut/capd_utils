@@ -9,16 +9,16 @@ namespace capd
 namespace map
 {
 
-template class Map<Carina::RMatrix>;
-template class Map<Carina::IMatrix>;
+template class Map<CapdUtils::RMatrix>;
+template class Map<CapdUtils::IMatrix>;
 
-template class Map<Carina::LRMatrix>;
-template class Map<Carina::LIMatrix>;
+template class Map<CapdUtils::LRMatrix>;
+template class Map<CapdUtils::LIMatrix>;
 
 #ifdef __HAVE_MPFR__
 
-template class Map<Carina::MpRMatrix>;
-template class Map<Carina::MpIMatrix>;
+template class Map<CapdUtils::MpRMatrix>;
+template class Map<CapdUtils::MpIMatrix>;
 
 #endif
 

@@ -10,7 +10,7 @@
 #include "section.hpp"
 #include <capd/poincare/PoincareMap.hpp>
 
-namespace Carina
+namespace CapdUtils
 {
 
 template<typename MapT, typename SectionT, bool is_interval>
@@ -47,25 +47,25 @@ namespace capd
 namespace poincare
 {
 
-extern template class BasicPoincareMap<Carina::OdeSolver<Carina::RMap>, Carina::CoordinateSection<Carina::RMap>>;
-extern template class PoincareMap<Carina::OdeSolver<Carina::IMap>, Carina::CoordinateSection<Carina::IMap>>;
+extern template class BasicPoincareMap<CapdUtils::OdeSolver<CapdUtils::RMap>, CapdUtils::CoordinateSection<CapdUtils::RMap>>;
+extern template class PoincareMap<CapdUtils::OdeSolver<CapdUtils::IMap>, CapdUtils::CoordinateSection<CapdUtils::IMap>>;
 
-extern template class BasicPoincareMap<Carina::OdeSolver<Carina::LRMap>, Carina::CoordinateSection<Carina::LRMap>>;
-extern template class PoincareMap<Carina::OdeSolver<Carina::LIMap>, Carina::CoordinateSection<Carina::LIMap>>;
+extern template class BasicPoincareMap<CapdUtils::OdeSolver<CapdUtils::LRMap>, CapdUtils::CoordinateSection<CapdUtils::LRMap>>;
+extern template class PoincareMap<CapdUtils::OdeSolver<CapdUtils::LIMap>, CapdUtils::CoordinateSection<CapdUtils::LIMap>>;
 
-extern template class BasicPoincareMap<Carina::OdeSolver<Carina::RMap>, Carina::AffineSection<Carina::RMap>>;
-extern template class PoincareMap<Carina::OdeSolver<Carina::IMap>, Carina::AffineSection<Carina::IMap>>;
+extern template class BasicPoincareMap<CapdUtils::OdeSolver<CapdUtils::RMap>, CapdUtils::AffineSection<CapdUtils::RMap>>;
+extern template class PoincareMap<CapdUtils::OdeSolver<CapdUtils::IMap>, CapdUtils::AffineSection<CapdUtils::IMap>>;
 
-extern template class BasicPoincareMap<Carina::OdeSolver<Carina::LRMap>, Carina::AffineSection<Carina::LRMap>>;
-extern template class PoincareMap<Carina::OdeSolver<Carina::LIMap>, Carina::AffineSection<Carina::LIMap>>;
+extern template class BasicPoincareMap<CapdUtils::OdeSolver<CapdUtils::LRMap>, CapdUtils::AffineSection<CapdUtils::LRMap>>;
+extern template class PoincareMap<CapdUtils::OdeSolver<CapdUtils::LIMap>, CapdUtils::AffineSection<CapdUtils::LIMap>>;
 
 #ifdef __HAVE_MPFR__
 
-extern template class BasicPoincareMap<Carina::OdeSolver<Carina::MpRMap>, Carina::CoordinateSection<Carina::MpRMap>>;
-extern template class PoincareMap<Carina::OdeSolver<Carina::MpIMap>, Carina::CoordinateSection<Carina::MpIMap>>;
+extern template class BasicPoincareMap<CapdUtils::OdeSolver<CapdUtils::MpRMap>, CapdUtils::CoordinateSection<CapdUtils::MpRMap>>;
+extern template class PoincareMap<CapdUtils::OdeSolver<CapdUtils::MpIMap>, CapdUtils::CoordinateSection<CapdUtils::MpIMap>>;
 
-extern template class BasicPoincareMap<Carina::OdeSolver<Carina::MpRMap>, Carina::AffineSection<Carina::MpRMap>>;
-extern template class PoincareMap<Carina::OdeSolver<Carina::MpIMap>, Carina::AffineSection<Carina::MpIMap>>;
+extern template class BasicPoincareMap<CapdUtils::OdeSolver<CapdUtils::MpRMap>, CapdUtils::AffineSection<CapdUtils::MpRMap>>;
+extern template class PoincareMap<CapdUtils::OdeSolver<CapdUtils::MpIMap>, CapdUtils::AffineSection<CapdUtils::MpIMap>>;
 
 #endif
 

@@ -7,7 +7,7 @@
 #include <iostream>
 #include <string>
 
-namespace Carina
+namespace CapdUtils
 {
 
 class ProgressLogger

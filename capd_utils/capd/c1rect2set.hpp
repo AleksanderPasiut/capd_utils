@@ -7,7 +7,7 @@
 #include "basic_types.hpp"
 #include <capd/dynset/C1DoubletonSet.hpp>
 
-namespace Carina
+namespace CapdUtils
 {
 
 template<typename MapT>

@@ -7,7 +7,7 @@
 #include <iomanip>
 #include <ostream>
 
-namespace Carina
+namespace CapdUtils
 {
 
 class ReadableMemory

@@ -13,7 +13,7 @@
 #include "local_coordinate_system.hpp"
 #include "gauss.hpp"
 
-namespace Carina
+namespace CapdUtils
 {
 
 template<typename MapT, bool is_interval>

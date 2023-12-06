@@ -13,7 +13,7 @@
 
 #include "newton_method.roots_list.hpp"
 
-namespace Carina
+namespace CapdUtils
 {
 
 template<typename MapT, bool is_interval>

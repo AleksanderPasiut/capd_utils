@@ -13,7 +13,7 @@
 
 #include "map_base.hpp"
 
-namespace Carina
+namespace CapdUtils
 {
 
 template<typename MapT, bool is_interval>

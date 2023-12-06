@@ -6,7 +6,7 @@
 
 #include <string>
 
-namespace Carina
+namespace CapdUtils
 {
     
 bool is_string_integer(const std::string& str);

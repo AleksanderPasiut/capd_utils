@@ -9,7 +9,7 @@
 #include <capd/dynsys/BasicOdeSolver.hpp>
 #include <capd/dynsys/OdeSolver.hpp>
 
-namespace Carina
+namespace CapdUtils
 {
 
 template<typename MapT, bool is_interval>
@@ -46,16 +46,16 @@ namespace capd
 namespace dynsys
 {
 
-extern template class BasicOdeSolver<Carina::RMap>;
-extern template class OdeSolver<Carina::IMap>;
+extern template class BasicOdeSolver<CapdUtils::RMap>;
+extern template class OdeSolver<CapdUtils::IMap>;
 
-extern template class BasicOdeSolver<Carina::LRMap>;
-extern template class OdeSolver<Carina::LIMap>;
+extern template class BasicOdeSolver<CapdUtils::LRMap>;
+extern template class OdeSolver<CapdUtils::LIMap>;
 
 #ifdef __HAVE_MPFR__
 
-extern template class BasicOdeSolver<Carina::MpRMap>;
-extern template class OdeSolver<Carina::MpIMap>;
+extern template class BasicOdeSolver<CapdUtils::MpRMap>;
+extern template class OdeSolver<CapdUtils::MpIMap>;
 
 #endif
 

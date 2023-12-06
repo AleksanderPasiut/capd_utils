@@ -8,7 +8,7 @@
 
 #include "capd/basic_types.hpp"
 
-namespace Carina
+namespace CapdUtils
 {
 
 template<typename ScalarOut>

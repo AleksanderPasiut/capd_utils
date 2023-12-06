@@ -10,7 +10,7 @@
 #include "extract.hpp"
 #include "concat.hpp"
 
-namespace Carina
+namespace CapdUtils
 {
 
 template<typename MapT, typename MapU, typename... MapV>

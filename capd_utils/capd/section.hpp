@@ -7,7 +7,7 @@
 #include "basic_types.hpp"
 #include <capd/poincare/AbstractSection.hpp>
 
-namespace Carina
+namespace CapdUtils
 {
 
 template<typename MapT>

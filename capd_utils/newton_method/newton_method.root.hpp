@@ -4,7 +4,7 @@
 
 #pragma once
 
-namespace Carina
+namespace CapdUtils
 {
 
 template<typename MapT>

@@ -8,7 +8,7 @@
 #include <capd_utils/concat.hpp>
 #include <capd_utils/local_coordinate_system.hpp>
 
-namespace Carina
+namespace CapdUtils
 {
 
 template<typename MapT>

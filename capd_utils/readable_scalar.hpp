@@ -6,7 +6,7 @@
 
 #include "readable_memory.hpp"
 
-namespace Carina
+namespace CapdUtils
 {
 
 template<typename ScalarType>

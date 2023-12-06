@@ -7,7 +7,7 @@
 #include "map_base.hpp"
 #include "map_compatibility.hpp"
 
-namespace Carina
+namespace CapdUtils
 {
 
 template<typename MapT, typename MapU, typename... MapV>

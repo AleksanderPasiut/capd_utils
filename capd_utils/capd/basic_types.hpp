@@ -14,7 +14,7 @@
 
 #endif
 
-namespace Carina
+namespace CapdUtils
 {
 
 using Real = double;

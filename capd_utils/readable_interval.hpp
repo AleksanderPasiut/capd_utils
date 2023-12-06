@@ -8,7 +8,7 @@
 
 #include "readable_scalar.hpp"
 
-namespace Carina
+namespace CapdUtils
 {
 
 template<typename ScalarType>

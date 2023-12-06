@@ -7,7 +7,7 @@
 #include "basic_types.hpp"
 #include <capd/map/Map.hpp>
 
-namespace Carina
+namespace CapdUtils
 {
 
 using RMap = capd::map::Map<RMatrix>;
@@ -30,16 +30,16 @@ namespace capd
 namespace map
 {
 
-extern template class Map<Carina::RMatrix>;
-extern template class Map<Carina::IMatrix>;
+extern template class Map<CapdUtils::RMatrix>;
+extern template class Map<CapdUtils::IMatrix>;
 
-extern template class Map<Carina::LRMatrix>;
-extern template class Map<Carina::LIMatrix>;
+extern template class Map<CapdUtils::LRMatrix>;
+extern template class Map<CapdUtils::LIMatrix>;
 
 #ifdef __HAVE_MPFR__
 
-extern template class Map<Carina::MpRMatrix>;
-extern template class Map<Carina::MpIMatrix>;
+extern template class Map<CapdUtils::MpRMatrix>;
+extern template class Map<CapdUtils::MpIMatrix>;
 
 #endif
 

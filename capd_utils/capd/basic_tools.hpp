@@ -6,7 +6,7 @@
 
 #include "basic_tools.internal.hpp"
 
-namespace Carina
+namespace CapdUtils
 {
 
 template<typename ScalarType>

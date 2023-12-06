@@ -6,7 +6,7 @@
 
 #include "type_cast.hpp"
 
-namespace Carina
+namespace CapdUtils
 {
 
 template<typename MapT, typename MapU>
