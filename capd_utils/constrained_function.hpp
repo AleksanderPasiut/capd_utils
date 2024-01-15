@@ -20,8 +20,16 @@ namespace CapdUtils
 //! @brief Constrained function evaluation
 //!
 //! @details Implementation of function `h` such that:
-//!          h( x_1, ..., x_n ) = f( x_1, ..., x_{n+k} ), where g( x_1, ..., x_{n+k} ) = 0
-//!          where f : R^{n+1} \rightarrow R^m and g : R^{n+1} \rightarrow R^k.
+//!
+//!              h( x_1, ..., x_n ) = f( x_1, ..., x_{n+k} ),
+//!
+//!          where
+//!              g( x_1, ..., x_{n+k} ) = 0,
+//!
+//!              f : R^n \rightarrow R^m,
+//!
+//!              g : R^n \rightarrow R^k.
+//!
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template<typename MapT, typename MapU, typename MapV>
 class ConstrainedFunction : public MapBase<MapT>
