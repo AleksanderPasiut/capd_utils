@@ -4,15 +4,10 @@ project(capd_utils)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_EXPORT_COMPILE_COMMANDS YES)
 
-set(SOURCES_LIST
-    capd_utils/capd/map.cpp
-    capd_utils/capd/ode_solver.cpp
-    capd_utils/capd/poincare_map.cpp
-    capd_utils/capd/timemap.cpp
+file(GLOB SOURCES_LIST capd_utils/*.cpp)
 
-    capd_utils/number_string_info.cpp
-    capd_utils/number_string_utilities.cpp
-    )
+file(GLOB SOURCES_LIST_CAPD capd_utils/capd/*.cpp)
+list(APPEND SOURCES_LIST ${SOURCES_LIST_CAPD})
 
 add_library(${PROJECT_NAME} STATIC ${SOURCES_LIST})
 
