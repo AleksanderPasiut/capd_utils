@@ -13,8 +13,12 @@ namespace CapdUtils
 using RMap = capd::map::Map<RMatrix>;
 using IMap = capd::map::Map<IMatrix>;
 
+#ifdef __FENV_ENABLED__
+
 using LRMap = capd::map::Map<LRMatrix>;
 using LIMap = capd::map::Map<LIMatrix>;
+
+#endif
 
 #ifdef __HAVE_MPFR__
 
@@ -33,8 +37,12 @@ namespace map
 extern template class Map<CapdUtils::RMatrix>;
 extern template class Map<CapdUtils::IMatrix>;
 
+#ifdef __FENV_ENABLED__
+
 extern template class Map<CapdUtils::LRMatrix>;
 extern template class Map<CapdUtils::LIMatrix>;
+
+#endif
 
 #ifdef __HAVE_MPFR__
 

@@ -52,6 +52,8 @@ struct ScalarConverterInternal<ScalarOut, false, ScalarIn, false>
     static_assert(always_false<ScalarOut>::value, "Unsupported scalar conversion!");
 };
 
+#ifdef __FENV_ENABLED__
+
 template<>
 struct ScalarConverterInternal<Real, false, LReal, false>
 {
@@ -69,6 +71,8 @@ struct ScalarConverterInternal<LReal, false, Real, false>
         return static_cast<LReal>(arg);
     }
 };
+
+#endif
 
 #ifdef __HAVE_MPFR__
 

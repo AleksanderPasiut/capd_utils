@@ -6,7 +6,11 @@
 
 #include <capd/capdlib.h>
 
+#ifdef __FENV_ENABLED__
+
 #include "fenv_rounding.hpp"
+
+#endif
 
 #ifdef __HAVE_MPFR__
 
@@ -26,6 +30,8 @@ using IVector = capd::vectalg::Vector<Interval, 0>;
 using RMatrix = capd::vectalg::Matrix<Real, 0, 0>;
 using IMatrix = capd::vectalg::Matrix<Interval, 0, 0>;
 
+#ifdef __FENV_ENABLED__
+
 using LReal = long double;
 using LInterval = capd::intervals::Interval<LReal, capd::rounding::FenvRounding>;
 
@@ -34,6 +40,8 @@ using LIVector = capd::vectalg::Vector<LInterval, 0>;
 
 using LRMatrix = capd::vectalg::Matrix<LReal, 0, 0>;
 using LIMatrix = capd::vectalg::Matrix<LInterval, 0, 0>;
+
+#endif
 
 #ifdef __HAVE_MPFR__
 

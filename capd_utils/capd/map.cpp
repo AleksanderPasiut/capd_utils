@@ -12,8 +12,12 @@ namespace map
 template class Map<CapdUtils::RMatrix>;
 template class Map<CapdUtils::IMatrix>;
 
+#ifdef __FENV_ENABLED__
+
 template class Map<CapdUtils::LRMatrix>;
 template class Map<CapdUtils::LIMatrix>;
+
+#endif
 
 #ifdef __HAVE_MPFR__
 

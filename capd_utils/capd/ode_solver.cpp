@@ -12,8 +12,12 @@ namespace dynsys
 template class BasicOdeSolver<CapdUtils::RMap>;
 template class OdeSolver<CapdUtils::IMap>;
 
+#ifdef __FENV_ENABLED__
+
 template class BasicOdeSolver<CapdUtils::LRMap>;
 template class OdeSolver<CapdUtils::LIMap>;
+
+#endif
 
 #ifdef __HAVE_MPFR__
 
