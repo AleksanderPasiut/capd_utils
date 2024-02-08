@@ -139,34 +139,43 @@ struct ScalarConverterInternal<ScalarOut, true, ScalarIn, false>
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//! @brief Internal implementation of scalar converter specialized for: interval to interval
+//! @brief Internal implementation of scalar converter specialized for: interval type to itself
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template<typename ScalarOut, typename ScalarIn>
-struct ScalarConverterInternal<ScalarOut, true, ScalarIn, true>
+template<typename ScalarType>
+struct ScalarConverterInternal<ScalarType, true, ScalarType, true>
 {
-    ScalarOut operator() (const ScalarIn& arg) const
+    ScalarType operator() (const ScalarType& arg) const
     {
-        using BoundTypeIn  = typename BasicTools::BoundType<ScalarIn>::ScalarType;
-        using BoundTypeOut = typename BasicTools::BoundType<ScalarOut>::ScalarType;
-
-        using RoundingPolicyIn  = typename ScalarIn::RoundingPolicy;
-        using RoundingPolicyOut = typename ScalarOut::RoundingPolicy;
-
-        ScalarConverterInternal<BoundTypeOut, false, BoundTypeIn, false> internal {};
-
-        RoundingPolicyIn::roundDown();
-        RoundingPolicyOut::roundDown();
-        const BoundTypeOut left = internal( arg.leftBound() );
-
-        RoundingPolicyIn::roundUp();
-        RoundingPolicyOut::roundUp();
-        const BoundTypeOut right = internal( arg.rightBound() );
-
-        RoundingPolicyIn::roundCut();
-        RoundingPolicyOut::roundCut();
-
-        return ScalarOut(left, right);
+        return arg;
     }
 };
+
+// template<typename ScalarOut, typename ScalarIn>
+// struct ScalarConverterInternal<ScalarOut, true, ScalarIn, true>
+// {
+//     ScalarOut operator() (const ScalarIn& arg) const
+//     {
+//         using BoundTypeIn  = typename BasicTools::BoundType<ScalarIn>::ScalarType;
+//         using BoundTypeOut = typename BasicTools::BoundType<ScalarOut>::ScalarType;
+
+//         using RoundingPolicyIn  = typename ScalarIn::RoundingPolicy;
+//         using RoundingPolicyOut = typename ScalarOut::RoundingPolicy;
+
+//         ScalarConverterInternal<BoundTypeOut, false, BoundTypeIn, false> internal {};
+
+//         RoundingPolicyIn::roundDown();
+//         RoundingPolicyOut::roundDown();
+//         const BoundTypeOut left = internal( arg.leftBound() );
+
+//         RoundingPolicyIn::roundUp();
+//         RoundingPolicyOut::roundUp();
+//         const BoundTypeOut right = internal( arg.rightBound() );
+
+//         RoundingPolicyIn::roundCut();
+//         RoundingPolicyOut::roundCut();
+
+//         return ScalarOut(left, right);
+//     }
+// };
 
 }

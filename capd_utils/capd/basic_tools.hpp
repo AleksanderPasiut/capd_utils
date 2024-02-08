@@ -186,8 +186,7 @@ inline typename ScalarType::BoundType amif(const ScalarType& internal, const Sca
 
     using BoundType = typename ScalarType::BoundType;
 
-    ScalarType dummy {};
-    if (capd::intervals::intersection(internal, external, dummy))
+    if (internal.getBaseInterval().disjoint(external.getBaseInterval()) == false)
     {
         const BoundType right_aif = external.rightBound() - internal.rightBound();
         const BoundType left_aif = internal.leftBound() - external.leftBound();
