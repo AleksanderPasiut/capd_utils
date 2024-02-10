@@ -23,8 +23,12 @@ namespace poincare
 extern template class TimeMap<CapdUtils::OdeSolver<CapdUtils::RMap>>;
 extern template class TimeMap<CapdUtils::OdeSolver<CapdUtils::IMap>>;
 
+#ifdef __HAVE_LONG__
+
 extern template class TimeMap<CapdUtils::OdeSolver<CapdUtils::LRMap>>;
 extern template class TimeMap<CapdUtils::OdeSolver<CapdUtils::LIMap>>;
+
+#endif
 
 #ifdef __HAVE_MPFR__
 

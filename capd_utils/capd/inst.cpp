@@ -22,8 +22,12 @@ namespace map
 template class BasicFunction<CapdUtils::Real>;
 template class BasicFunction<CapdUtils::Interval>;
 
+#ifdef __HAVE_LONG__
+
 template class BasicFunction<CapdUtils::LReal>;
 template class BasicFunction<CapdUtils::LInterval>;
+
+#endif
 
 #ifdef __HAVE_MPFR__
 
@@ -35,8 +39,12 @@ template class BasicFunction<CapdUtils::MpInterval>;
 template class Map<CapdUtils::RMatrix>;
 template class Map<CapdUtils::IMatrix>;
 
+#ifdef __HAVE_LONG__
+
 template class Map<CapdUtils::LRMatrix>;
 template class Map<CapdUtils::LIMatrix>;
+
+#endif
 
 #ifdef __HAVE_MPFR__
 
@@ -53,8 +61,12 @@ namespace dynsys
 template class BasicOdeSolver<CapdUtils::RMap>;
 template class OdeSolver<CapdUtils::IMap>;
 
+#ifdef __HAVE_LONG__
+
 template class BasicOdeSolver<CapdUtils::LRMap>;
 template class OdeSolver<CapdUtils::LIMap>;
+
+#endif
 
 #ifdef __HAVE_MPFR__
 
@@ -71,8 +83,12 @@ namespace poincare
 template class TimeMap<CapdUtils::OdeSolver<CapdUtils::RMap>>;
 template class TimeMap<CapdUtils::OdeSolver<CapdUtils::IMap>>;
 
+#ifdef __HAVE_LONG__
+
 template class TimeMap<CapdUtils::OdeSolver<CapdUtils::LRMap>>;
 template class TimeMap<CapdUtils::OdeSolver<CapdUtils::LIMap>>;
+
+#endif
 
 #ifdef __HAVE_MPFR__
 
@@ -84,14 +100,22 @@ template class TimeMap<CapdUtils::OdeSolver<CapdUtils::MpIMap>>;
 template class BasicPoincareMap<CapdUtils::OdeSolver<CapdUtils::RMap>, CapdUtils::CoordinateSection<CapdUtils::RMap>>;
 template class PoincareMap<CapdUtils::OdeSolver<CapdUtils::IMap>, CapdUtils::CoordinateSection<CapdUtils::IMap>>;
 
+#ifdef __HAVE_LONG__
+
 template class BasicPoincareMap<CapdUtils::OdeSolver<CapdUtils::LRMap>, CapdUtils::CoordinateSection<CapdUtils::LRMap>>;
 template class PoincareMap<CapdUtils::OdeSolver<CapdUtils::LIMap>, CapdUtils::CoordinateSection<CapdUtils::LIMap>>;
+
+#endif 
 
 template class BasicPoincareMap<CapdUtils::OdeSolver<CapdUtils::RMap>, CapdUtils::AffineSection<CapdUtils::RMap>>;
 template class PoincareMap<CapdUtils::OdeSolver<CapdUtils::IMap>, CapdUtils::AffineSection<CapdUtils::IMap>>;
 
+#ifdef __HAVE_LONG__
+
 template class BasicPoincareMap<CapdUtils::OdeSolver<CapdUtils::LRMap>, CapdUtils::AffineSection<CapdUtils::LRMap>>;
 template class PoincareMap<CapdUtils::OdeSolver<CapdUtils::LIMap>, CapdUtils::AffineSection<CapdUtils::LIMap>>;
+
+#endif
 
 #ifdef __HAVE_MPFR__
 

@@ -4,6 +4,8 @@
 
 #pragma once
 
+#ifdef __HAVE_LONG__
+
 #include <capd/rounding/DoubleRounding.h>
 
 #include <fenv.h>
@@ -92,3 +94,5 @@ struct FenvRounding
 
 }
 }
+
+#endif

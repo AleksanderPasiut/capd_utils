@@ -47,8 +47,12 @@ namespace dynsys
 extern template class BasicOdeSolver<CapdUtils::RMap>;
 extern template class OdeSolver<CapdUtils::IMap>;
 
+#ifdef __HAVE_LONG__
+
 extern template class BasicOdeSolver<CapdUtils::LRMap>;
 extern template class OdeSolver<CapdUtils::LIMap>;
+
+#endif
 
 #ifdef __HAVE_MPFR__
 
