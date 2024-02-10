@@ -5,7 +5,6 @@
 #pragma once
 
 #include "basic_types.hpp"
-#include <capd/map/Map.hpp>
 
 namespace CapdUtils
 {
@@ -29,6 +28,19 @@ namespace capd
 {
 namespace map
 {
+
+extern template class BasicFunction<CapdUtils::Real>;
+extern template class BasicFunction<CapdUtils::Interval>;
+
+extern template class BasicFunction<CapdUtils::LReal>;
+extern template class BasicFunction<CapdUtils::LInterval>;
+
+#ifdef __HAVE_MPFR__
+
+extern template class BasicFunction<CapdUtils::MpReal>;
+extern template class BasicFunction<CapdUtils::MpInterval>;
+
+#endif
 
 extern template class Map<CapdUtils::RMatrix>;
 extern template class Map<CapdUtils::IMatrix>;

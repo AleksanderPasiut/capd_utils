@@ -6,8 +6,6 @@
 
 #include "basic_types.hpp"
 #include "map.hpp"
-#include <capd/dynsys/BasicOdeSolver.hpp>
-#include <capd/dynsys/OdeSolver.hpp>
 
 namespace CapdUtils
 {
