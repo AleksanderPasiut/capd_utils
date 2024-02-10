@@ -8,7 +8,6 @@
 #include "map.hpp"
 #include "ode_solver.hpp"
 #include "section.hpp"
-#include <capd/poincare/PoincareMap.hpp>
 
 namespace CapdUtils
 {

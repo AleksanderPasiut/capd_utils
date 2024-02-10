@@ -18,7 +18,7 @@ namespace CapdUtils
 {
 
 using Real = double;
-using Interval = capd::intervals::Interval<Real, capd::rounding::DoubleRounding>;
+using Interval = capd::filib::Interval<double, ::filib::native_directed, ::filib::i_mode_normal >;
 
 using RVector = capd::vectalg::Vector<Real, 0>;
 using IVector = capd::vectalg::Vector<Interval, 0>;

@@ -6,7 +6,6 @@
 
 #include "basic_types.hpp"
 #include "ode_solver.hpp"
-#include <capd/poincare/TimeMap.hpp>
 
 namespace CapdUtils
 {

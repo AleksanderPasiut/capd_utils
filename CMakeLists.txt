@@ -5,10 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_EXPORT_COMPILE_COMMANDS YES)
 
 set(SOURCES_LIST
-    capd_utils/capd/map.cpp
-    capd_utils/capd/ode_solver.cpp
-    capd_utils/capd/poincare_map.cpp
-    capd_utils/capd/timemap.cpp
+    capd_utils/capd/inst.cpp
 
     capd_utils/number_string_info.cpp
     capd_utils/number_string_utilities.cpp
