@@ -19,6 +19,19 @@ namespace capd
 namespace map
 {
 
+template class BasicFunction<CapdUtils::Real>;
+template class BasicFunction<CapdUtils::Interval>;
+
+template class BasicFunction<CapdUtils::LReal>;
+template class BasicFunction<CapdUtils::LInterval>;
+
+#ifdef __HAVE_MPFR__
+
+template class BasicFunction<CapdUtils::MpReal>;
+template class BasicFunction<CapdUtils::MpInterval>;
+
+#endif
+
 template class Map<CapdUtils::RMatrix>;
 template class Map<CapdUtils::IMatrix>;
 
