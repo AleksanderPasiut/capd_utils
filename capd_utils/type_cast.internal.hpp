@@ -52,6 +52,8 @@ struct ScalarConverterInternal<ScalarOut, false, ScalarIn, false>
     static_assert(always_false<ScalarOut>::value, "Unsupported scalar conversion!");
 };
 
+#ifdef __HAVE_LONG__
+
 template<>
 struct ScalarConverterInternal<Real, false, LReal, false>
 {
@@ -70,6 +72,8 @@ struct ScalarConverterInternal<LReal, false, Real, false>
     }
 };
 
+#endif
+
 #ifdef __HAVE_MPFR__
 
 template<>
@@ -81,6 +85,8 @@ struct ScalarConverterInternal<Real, false, MpReal, false>
     }
 };
 
+#ifdef __HAVE_LONG__
+
 template<>
 struct ScalarConverterInternal<LReal, false, MpReal, false>
 {
@@ -89,6 +95,8 @@ struct ScalarConverterInternal<LReal, false, MpReal, false>
         return toLongDouble(arg);
     }
 };
+
+#endif
 
 template<>
 struct ScalarConverterInternal<MpReal, false, Real, false>
@@ -99,6 +107,8 @@ struct ScalarConverterInternal<MpReal, false, Real, false>
     }
 };
 
+#ifdef __HAVE_LONG__
+
 template<>
 struct ScalarConverterInternal<MpReal, false, LReal, false>
 {
@@ -107,6 +117,8 @@ struct ScalarConverterInternal<MpReal, false, LReal, false>
         return MpReal(arg);
     }
 };
+
+#endif
 
 #endif
 
