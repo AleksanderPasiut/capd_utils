@@ -47,7 +47,7 @@ public:
             {
                 const VectorType dx = gauss<MapT>(der, value);
 
-                #ifdef CARINA_LOG
+                #ifdef CAPD_UTILS_LOG
 
                 std::cout << "root: " << root.argument << '\n';
                 std::cout << "val: " << value << '\n';
@@ -136,7 +136,7 @@ private:
 
         for (size_t i = 0;; ++i)
         {
-            #ifdef CARINA_LOG
+            #ifdef CAPD_UTILS_LOG
 
             std::cout << "iteration: " << i << '\n';
 
@@ -151,7 +151,7 @@ private:
             {
                 const VectorType dx = mid_vector( gauss<MapT>(der, value) );
 
-                #ifdef CARINA_LOG
+                #ifdef CAPD_UTILS_LOG
 
                 std::cout << "root: " << root.argument << '\n';
                 std::cout << "val: " << value << '\n';
@@ -189,7 +189,7 @@ private:
             {
                 const VectorType interior = get_interior(map, root, root_midpoint, val);
 
-                #ifdef CARINA_LOG
+                #ifdef CAPD_UTILS_LOG
 
                 std::cout << "span interior: " << span_vector(interior) << '\n';
 

@@ -11,7 +11,7 @@
 #include "capd/basic_types.hpp"
 #include "map_base.hpp"
 
-#ifdef CARINA_LOG
+#ifdef CAPD_UTILS_LOG
 #include "progress_logger.hpp"
 #endif
 
@@ -41,13 +41,13 @@ public:
 
             VectorType ret = m_ref(*it);
 
-            #ifdef CARINA_LOG
+            #ifdef CAPD_UTILS_LOG
             ProgressLogger logger(std::cout, "Grid", args.size(), 1);
             #endif
 
             for (++it; it != args.end(); ++it)
             {
-                #ifdef CARINA_LOG
+                #ifdef CAPD_UTILS_LOG
                 ProgressLogger::Updater updater(logger);
                 #endif
 
@@ -74,13 +74,13 @@ public:
 
             VectorType ret = m_ref(*it, mat);
 
-            #ifdef CARINA_LOG
+            #ifdef CAPD_UTILS_LOG
             ProgressLogger logger(std::cout, "Grid", args.size(), 1);
             #endif
 
             for (++it; it != args.end(); ++it)
             {
-                #ifdef CARINA_LOG
+                #ifdef CAPD_UTILS_LOG
                 ProgressLogger::Updater updater(logger);
                 #endif
 
