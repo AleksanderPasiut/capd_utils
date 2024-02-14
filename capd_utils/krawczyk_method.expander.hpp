@@ -37,7 +37,7 @@ public:
             {
                 const VectorType interior = get_interior(root_with_epsilon, root, val, C);
 
-                #ifdef CARINA_LOG
+                #ifdef CAPD_UTILS_LOG
 
                 std::cout << "span interior: " << span_vector(interior) << '\n';
 
