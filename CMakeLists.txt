@@ -6,9 +6,6 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS YES)
 
 set(SOURCES_LIST
     capd_utils/capd/inst.cpp
-
-    capd_utils/number_string_info.cpp
-    capd_utils/number_string_utilities.cpp
     )
 
 add_library(${PROJECT_NAME} STATIC ${SOURCES_LIST})
