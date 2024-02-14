@@ -6,7 +6,11 @@
 
 #include <capd/capdlib.h>
 
+#ifdef __HAVE_LONG__
+
 #include "fenv_rounding.hpp"
+
+#endif
 
 #ifdef __HAVE_MPFR__
 
