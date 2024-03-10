@@ -126,16 +126,23 @@ public:
 
 	VectorType operator() (const VectorType& vec) override
 	{
+		this->assert_vector_size(vec, m_vector_field.dimension(), "TimemapWrapper vec vector mismatch (1)!");
+
 		return m_timemap_internal(vec);
 	}
 
     VectorType operator() (const VectorType& vec, MatrixType& der) override
 	{
+		this->assert_vector_size(vec, m_vector_field.dimension(), "TimemapWrapper vec vector mismatch (2)!");
+		this->assert_matrix_size(der, m_vector_field.imageDimension(), m_vector_field.dimension(), "TimemapWrapper der matrix mismatch!");
+
 		return m_timemap_internal(vec, der);
 	}
 
 	void operator() (const VectorType& vec, SolutionCurve<MapT>& solution_curve)
 	{
+		this->assert_vector_size(vec, m_vector_field.dimension(), "TimemapWrapper vec vector mismatch (3)!");
+
 		m_timemap_internal(vec, solution_curve);
 	}
 

@@ -137,11 +137,16 @@ public:
 
 	VectorType operator() (const VectorType& vec) override
     {
+		this->assert_vector_size(vec, m_vector_field.dimension(), "PoincareWrapper vec vector mismatch (1)!");
+
         return m_poincare_internal(vec);
     }
 
     VectorType operator() (const VectorType& vec, MatrixType& der) override
     {
+		this->assert_vector_size(vec, m_vector_field.dimension(), "PoincareWrapper vec vector mismatch (2)!");
+        this->assert_matrix_size(der, m_vector_field.imageDimension(), m_vector_field.dimension(), "PoincareWrapper der matrix mismatch!");
+
 		return m_poincare_internal(vec, der);
     }
 
