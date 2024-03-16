@@ -5,8 +5,7 @@
 #pragma once
 
 #include <stdint.h>
-#include <ostream>
-#include <istream>
+#include <sstream>
 #include <array>
 
 namespace CapdUtils
