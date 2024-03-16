@@ -4,8 +4,10 @@
 
 #pragma once
 
-#include <iomanip>
+#include <stdint.h>
 #include <ostream>
+#include <istream>
+#include <array>
 
 namespace CapdUtils
 {
